@@ -28,5 +28,5 @@ to it, which includes a question, and answer
 - As a user, I want to be able to select a flashcard, and add a statistic
 for how many times I have attempted it, and how many times I have gotten it correct
 - As a user, I want to be able to delete a flashcard from my set
-- As a user, I want to be able to save my flashcard set
+
 

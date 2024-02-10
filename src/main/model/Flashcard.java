@@ -54,5 +54,14 @@ public class Flashcard {
         incorrectAttempts++;
     }
 
+    public String flashCardOverview() {
+        String overview = "";
+        overview += "The question is: " + this.question + "\n";
+        overview += "The answer is: " + this.answer + "\n";
+        overview += "You have answered this correctly: " + this.correctAttempts + " times\n";
+        overview += "You have answered this incorrectly: " + this.incorrectAttempts + " times\n";
+        return overview;
+    }
+
 
 }

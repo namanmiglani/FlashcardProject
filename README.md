@@ -26,7 +26,7 @@ to help me in future courses.
 to it, which includes a question, and answer
 - As a user, I want to be able to view all the flashcards in a flashcard set
 - As a user, I want to be able to select a flashcard, and add a statistic
-for how many times I have attempted it, and how many times I have gotten it correct
+for how many times I have gotten it correct, and how many times I have got it incorrect
 - As a user, I want to be able to delete a flashcard from my set
 
 

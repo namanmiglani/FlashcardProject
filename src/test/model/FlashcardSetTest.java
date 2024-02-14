@@ -44,6 +44,18 @@ public class FlashcardSetTest {
     }
 
     @Test
+    void testDeleteFlashcard() {
+        testFlashcardSet.addFlashcardToSet(testFlashcardOne);
+        testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
+        assertEquals(2, testFlashcardSet.getSetOfFlashcards().size());
+        assertEquals(testFlashcardOne.flashCardOverview(), testFlashcardSet.getFlashCardOverview(1));
+        assertEquals(testFlashcardTwo.flashCardOverview(), testFlashcardSet.getFlashCardOverview(2));
+        testFlashcardSet.deleteFlashCard(1);
+        assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
+        assertEquals(testFlashcardTwo.flashCardOverview(), testFlashcardSet.getFlashCardOverview(1));
+    }
+
+    @Test
     void testGetFlashcardOverview() {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);

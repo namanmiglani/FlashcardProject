@@ -1,10 +1,13 @@
 package model;
 
+// Represents a flashcard having a question, a answer, and a statistic on how many times it has been answered correctly,
+// and incorrectly
 public class Flashcard {
     private String question;
     private String answer;
     private int correctAttempts;
     private int incorrectAttempts;
+
 
     // EFFECTS: Creates new flashcard with a question, an answer, and 0 attempts
     public Flashcard(String question, String answer) {
@@ -14,46 +17,39 @@ public class Flashcard {
         this. incorrectAttempts = 0;
     }
 
+
     public String getQuestion() {
         return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
     }
 
     public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
     public int getCorrectAttempts() {
         return correctAttempts;
-    }
-
-    public void setCorrectAttempts(int correctAttempts) {
-        this.correctAttempts = correctAttempts;
     }
 
     public int getIncorrectAttempts() {
         return incorrectAttempts;
     }
 
-    public void setIncorrectAttempts(int incorrectAttempts) {
-        this.incorrectAttempts = incorrectAttempts;
-    }
 
+    // MODIFIES: this
+    // EFFECTS: adds one to the amount of times you have gotten a flashcard's answer correct
     public void answeredCorrect() {
         correctAttempts++;
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds one to the amount of times you have gotten a flashcard's answer incorrect
     public void answeredIncorrect() {
         incorrectAttempts++;
     }
 
+
+    // EFFECTS: creates a string overview of a flashcard with the question, answer, and the statistics on how many times
+    // it has been answered correctly, and incorrectly
     public String flashCardOverview() {
         String overview = "";
         overview += "The question is: " + this.question + "\n";

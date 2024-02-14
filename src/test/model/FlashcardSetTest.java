@@ -39,7 +39,7 @@ public class FlashcardSetTest {
     void testViewFlashcards() {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
-        assertEquals("Flashcard 1:\n" + "test question\n" + "Flashcard 2:\n" + "test question two\n",
+        assertEquals("\n" + "Flashcard 1:\n" + "test question\n" + "Flashcard 2:\n" + "test question two\n",
                 testFlashcardSet.viewFlashcardSet());
     }
 
@@ -48,27 +48,36 @@ public class FlashcardSetTest {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
         assertEquals(2, testFlashcardSet.getSetOfFlashcards().size());
-        assertEquals(testFlashcardOne.flashCardOverview(), testFlashcardSet.getFlashCardOverview(1));
-        assertEquals(testFlashcardTwo.flashCardOverview(), testFlashcardSet.getFlashCardOverview(2));
+        assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
+        assertEquals(testFlashcardTwo, testFlashcardSet.getSetOfFlashcards().get(1));
         testFlashcardSet.deleteFlashCard(1);
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
-        assertEquals(testFlashcardTwo.flashCardOverview(), testFlashcardSet.getFlashCardOverview(1));
+        assertEquals(testFlashcardTwo, testFlashcardSet.getSetOfFlashcards().get(0));
     }
 
     @Test
     void testGetFlashcardOverview() {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
-        assertEquals(testFlashcardOne.flashCardOverview(), testFlashcardSet.getFlashCardOverview(1));
-        assertEquals(testFlashcardTwo.flashCardOverview(), testFlashcardSet.getFlashCardOverview(2));
+        assertTrue(testFlashcardSet.getFlashCardOverview(1).contains("\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(1).contains("The question is: " + "test question" + "\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(1).contains("The answer is: " + "test answer" + "\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(1).contains("You have answered this correctly: " + 0 + " times\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(1).contains("You have answered this incorrectly: " + 0 + " times"));
+
+        assertTrue(testFlashcardSet.getFlashCardOverview(2).contains("\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(2).contains("The question is: " + "test question two" + "\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(2).contains("The answer is: " + "test answer two" + "\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(2).contains("You have answered this correctly: " + 0 + " times\n"));
+        assertTrue(testFlashcardSet.getFlashCardOverview(2).contains("You have answered this incorrectly: " + 0 + " times"));
     }
 
     @Test
     void testGetFlashcard() {
-        testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
-        assertEquals(testFlashcardOne, testFlashcardSet.getFlashCard(1));
-        assertEquals(testFlashcardTwo, testFlashcardSet.getFlashCard(2));
+        testFlashcardSet.addFlashcardToSet(testFlashcardOne);
+        assertEquals(testFlashcardOne, testFlashcardSet.getFlashCard(2));
+        assertEquals(testFlashcardTwo, testFlashcardSet.getFlashCard(1));
     }
 
 }

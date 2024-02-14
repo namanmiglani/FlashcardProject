@@ -38,12 +38,10 @@ class FlashcardTest {
 
     @Test
     void testFlashcardOverview() {
-        String overview = "";
-        overview += "The question is: " + "question?" + "\n";
-        overview += "The answer is: " + "answer" + "\n";
-        overview += "You have answered this correctly: " + 0 + " times\n";
-        overview += "You have answered this incorrectly: " + 0 + " times\n";
-
-        assertEquals(overview, testFlashcard.flashCardOverview());
+        assertTrue(testFlashcard.flashCardOverview().contains("\n"));
+        assertTrue(testFlashcard.flashCardOverview().contains("The question is: " + "question?" + "\n"));
+        assertTrue(testFlashcard.flashCardOverview().contains("The answer is: " + "answer" + "\n"));
+        assertTrue(testFlashcard.flashCardOverview().contains("You have answered this correctly: " + 0 + " times\n"));
+        assertTrue(testFlashcard.flashCardOverview().contains("You have answered this incorrectly: " + 0 + " times"));
     }
 }

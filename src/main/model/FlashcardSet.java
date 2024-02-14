@@ -28,13 +28,15 @@ public class FlashcardSet {
         return name;
     }
 
-    // EFFECTS: returns all the flashcards in a given set
+    // REQUIRES: flashcard set has at least one flashcard added to it
+    // EFFECTS: returns all the flashcards in a given set, including the question, and a flashcard number based of the
+    // order of when it was added to the set
     public String viewFlashcardSet() {
         ArrayList<String> stringList = new ArrayList<>();
         for (Flashcard flashcard: setOfFlashcards) {
             stringList.add(flashcard.getQuestion());
         }
-        String questions = "";
+        String questions = "\n";
         int questionNumber = 1;
         for (int i = 0; i < stringList.size(); i++) {
             questions += "Flashcard " + questionNumber + ":\n" + stringList.get(i) + "\n";
@@ -43,20 +45,26 @@ public class FlashcardSet {
         return questions;
     }
 
+    // REQUIRES: flashcard set has at least one flashcard added to it
     // MODIFIES: this
-    // EFFECTS: deletes a flashcard from the flashcard set
+    // EFFECTS: deletes a flashcard from the flashcard set based of its flashcard number which does not follow
+    // zero-based indexing and is based of when it was added to the set
     public void deleteFlashCard(int number) {
         number--;
         setOfFlashcards.remove(number);
     }
 
-    // EFFECTS: gets a flashcard's overview from the given set based on number given
+    // REQUIRES: flashcard set has at least one flashcard added to it
+    // EFFECTS: gets a flashcard's overview from the given flashcard set based of its flashcard number which does not
+    // follow zero-based indexing and is based of when it was added to the set
     public String getFlashCardOverview(int number) {
         number--;
         return setOfFlashcards.get(number).flashCardOverview();
     }
 
-    // EFFECTS: gets a flashcard's from the given set based on number given
+    // REQUIRES: flashcard set has at least one flashcard added to it
+    // EFFECTS: gets a flashcard from the given flashcard set based of its flashcard number which does not follow
+    // zero-based indexing and is based of when it was added to the set
     public Flashcard getFlashCard(int number) {
         number--;
         return setOfFlashcards.get(number);

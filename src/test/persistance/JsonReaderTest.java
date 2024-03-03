@@ -11,50 +11,48 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JsonWriterTest {
+public class JsonReaderTest {
 
     @Test
-    void testInvalidFile() {
+    void testNonExistantFile() {
+        JsonReader reader = new JsonReader("./data/nonExistant.json");
         try {
-            FlashcardSet fs = new FlashcardSet("testSet");
-            JsonWriter writer = new JsonWriter(".data/my\0:file.json");
-            writer.open();
-            fail("IOException was expected");
+            FlashcardSet fs = reader.read();
+            fail("expected error");
         } catch (IOException e) {
-            // expected
+            //
         }
     }
 
     @Test
-    void emptyFlashcardSet() {
+    void testReaderEmptyFlashcardSet() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
-            JsonWriter writer = new JsonWriter("./data/testEmptyWriterFlashcard.json");
+            JsonWriter writer = new JsonWriter("./data/testReaderEmptyFlashcardSet.json");
             writer.open();
             writer.write(fs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testEmptyWriterFlashcard.json");
+            JsonReader reader =  new JsonReader("./data/testReaderEmptyFlashcardSet.json");
             fs = reader.read();
             assertEquals("testSet", fs.getName());
             assertEquals(0, fs.getSetOfFlashcards().size());
-
         } catch (IOException e) {
-            fail("unexpected");
+            fail("expected error");
         }
     }
 
     @Test
-    void nonemptyFlashcardSet() {
+    void nonreaderFlashcardSet() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
             fs.addFlashcardToSet(new Flashcard("q", "a"));
-            JsonWriter writer = new JsonWriter("./data/testWriterFlashcard.json");
+            JsonWriter writer = new JsonWriter("./data/testReaderFlashcard.json");
             writer.open();
             writer.write(fs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterFlashcard.json");
+            JsonReader reader = new JsonReader("./data/testReaderFlashcard.json");
             fs = reader.read();
             assertEquals("testSet", fs.getName());
             assertEquals(1, fs.getSetOfFlashcards().size());
@@ -63,5 +61,6 @@ public class JsonWriterTest {
             fail("unexpected");
         }
     }
+
 
 }

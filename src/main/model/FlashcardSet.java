@@ -79,11 +79,11 @@ public class FlashcardSet implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("flashcards", setOfFlashcards);
+        json.put("flashcards", flashcardsToJson());
         return json;
     }
 
-    private JSONArray flashcardsToJson() {
+    public JSONArray flashcardsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Flashcard f : setOfFlashcards) {

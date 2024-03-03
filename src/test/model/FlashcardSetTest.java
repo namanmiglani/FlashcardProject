@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -78,6 +82,25 @@ public class FlashcardSetTest {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         assertEquals(testFlashcardOne, testFlashcardSet.getFlashCard(2));
         assertEquals(testFlashcardTwo, testFlashcardSet.getFlashCard(1));
+    }
+
+    @Test
+    void testToJson() {
+        testFlashcardSet.addFlashcardToSet(testFlashcardOne);
+        testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
+        JSONObject testJson = testFlashcardSet.toJson();
+        assertEquals("Test set", testJson.get("name"));
+        JSONArray myArray = (JSONArray) testJson.get("flashcards");
+        assertEquals("{\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
+    }
+
+    @Test
+    void testFlashcardsToJson() {
+        testFlashcardSet.addFlashcardToSet(testFlashcardOne);
+        testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
+        JSONArray myArray = testFlashcardSet.flashcardsToJson();
+        assertEquals("{\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
+        assertEquals("{\"question\":\"test question two\",\"answer\":\"test answer two\"}", myArray.get(1).toString());
     }
 
 }

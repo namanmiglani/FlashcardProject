@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,5 +44,12 @@ class FlashcardTest {
         assertTrue(testFlashcard.flashCardOverview().contains("The answer is: " + "answer" + "\n"));
         assertTrue(testFlashcard.flashCardOverview().contains("You have answered this correctly: " + 0 + " times\n"));
         assertTrue(testFlashcard.flashCardOverview().contains("You have answered this incorrectly: " + 0 + " times"));
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject testJson = testFlashcard.toJson();
+        assertEquals("question?", testJson.get("question"));
+        assertEquals("answer", testJson.get("answer"));
     }
 }

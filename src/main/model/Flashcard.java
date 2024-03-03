@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+
 // Represents a flashcard having a question, an answer, and a statistic for how many times it has been answered
 // correctly, and incorrectly
-public class Flashcard {
+public class Flashcard implements Writable {
     private String question;
     private String answer;
     private int correctAttempts;
@@ -60,5 +64,12 @@ public class Flashcard {
         return overview;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("question", question);
+        json.put("answer", answer);
+        return json;
+    }
 
 }

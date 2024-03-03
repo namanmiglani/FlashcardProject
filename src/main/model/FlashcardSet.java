@@ -1,9 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 
 // Represents a flashcard set having a name, and a list of flashcards
-public class FlashcardSet {
+public class FlashcardSet implements Writable {
     private ArrayList<Flashcard> setOfFlashcards;
     private String name;
 
@@ -71,7 +75,23 @@ public class FlashcardSet {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("flashcards", setOfFlashcards);
+        return json;
+    }
 
+    private JSONArray flashcardsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Flashcard f : setOfFlashcards) {
+            jsonArray.put(f.toJson());
+        }
+
+        return jsonArray;
+    }
 }
 
 

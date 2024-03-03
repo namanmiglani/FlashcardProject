@@ -2,17 +2,27 @@ package ui;
 
 import model.Flashcard;
 import model.FlashcardSet;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Flashcard application
 public class FlashcardApp {
+    private static final String JSON_STORE = "./data/flashcardSet.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     private FlashcardSet mathSet;
     private FlashcardSet biologySet;
 
     // EFFECTS: runs the flashcard app
-    public FlashcardApp() {
+    public FlashcardApp() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runFlashcardApp();
     }
 
@@ -54,6 +64,8 @@ public class FlashcardApp {
         System.out.println("\tv -> View all flashcards in a set");
         System.out.println("\td -> Delete a flashcard from a set");
         System.out.println("\to -> View flashcard overview");
+        System.out.println("\ts -> Save work to a file");
+        System.out.println("\tl -> Load work from a file");
         System.out.println("\tq -> Quit");
     }
 
@@ -68,6 +80,10 @@ public class FlashcardApp {
             deleteFlashcard();
         } else if (command.equals("o")) {
             produceOverview();
+        } else if (command.equals("s")) {
+            saveSet();
+        } else if (command.equals("l")) {
+            loadSet();
         }
     }
 
@@ -193,6 +209,33 @@ public class FlashcardApp {
             }
         }
         return toView;
+    }
+
+    private void saveSet() {
+        FlashcardSet fs = selectSet();
+        try {
+            jsonWriter.open();
+            jsonWriter.write(fs);
+            jsonWriter.close();
+            System.out.println("Saved");
+        } catch (FileNotFoundException e) {
+            System.out.println("error");
+        }
+    }
+
+    private void loadSet() {
+        FlashcardSet fs = selectSet();
+        try {
+            if (fs.equals(mathSet)) {
+                mathSet = jsonReader.read();
+                System.out.println("Loaded");
+            } else {
+                biologySet = jsonReader.read();
+                System.out.println("Loaded");
+            }
+        } catch (IOException e) {
+            System.out.println("error");
+        }
     }
 }
 

@@ -61,7 +61,7 @@ public class JsonReader {
     // EFFECTS: parses flashcard from JSON object and adds it to flashcard set
     private void addFlashcard(FlashcardSet fs, JSONObject jsonObject) {
         String question = jsonObject.getString("question");
-        String answer = jsonObject.getString("question");
+        String answer = jsonObject.getString("answer");
         Flashcard flashcard = new Flashcard(question, answer);
         fs.addFlashcardToSet(flashcard);
     }

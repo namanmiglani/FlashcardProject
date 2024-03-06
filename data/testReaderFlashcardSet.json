@@ -1,0 +1,7 @@
+{
+    "name": "testSet",
+    "flashcards": [{
+        "question": "q",
+        "answer": "a"
+    }]
+}

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JsonWriterTest {
 
     @Test
-    void testInvalidFile() {
+    void invalidFileTest() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
             JsonWriter writer = new JsonWriter(".data/my\0:file.json");
@@ -26,7 +26,7 @@ public class JsonWriterTest {
     }
 
     @Test
-    void emptyFlashcardSet() {
+    void emptyFlashcardSetTest() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
             JsonWriter writer = new JsonWriter("./data/testEmptyWriterFlashcard.json");
@@ -45,16 +45,16 @@ public class JsonWriterTest {
     }
 
     @Test
-    void nonemptyFlashcardSet() {
+    void notEmptyFlashcardSetTest() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
             fs.addFlashcardToSet(new Flashcard("q", "a"));
-            JsonWriter writer = new JsonWriter("./data/testWriterFlashcard.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterFlashcardSet.json");
             writer.open();
             writer.write(fs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterFlashcard.json");
+            JsonReader reader = new JsonReader("./data/testWriterFlashcardSet.json");
             fs = reader.read();
             assertEquals("testSet", fs.getName());
             assertEquals(1, fs.getSetOfFlashcards().size());

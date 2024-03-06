@@ -64,6 +64,7 @@ public class Flashcard implements Writable {
         return overview;
     }
 
+    // EFFECTS: returns flashcard as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

@@ -49,7 +49,7 @@ public class FlashcardSet implements Writable {
         return questions;
     }
 
-    // REQUIRES: flashcard set has at least one flashcard added to it
+    // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
     // MODIFIES: this
     // EFFECTS: deletes a flashcard from the flashcard set based of its flashcard number which does not follow
     // zero-based indexing and is based of when it was added to the set
@@ -58,7 +58,7 @@ public class FlashcardSet implements Writable {
         setOfFlashcards.remove(number);
     }
 
-    // REQUIRES: flashcard set has at least one flashcard added to it
+    // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
     // EFFECTS: gets a flashcard's overview from the given flashcard set based of its flashcard number which does not
     // follow zero-based indexing and is based of when it was added to the set
     public String getFlashCardOverview(int number) {
@@ -66,7 +66,7 @@ public class FlashcardSet implements Writable {
         return setOfFlashcards.get(number).flashCardOverview();
     }
 
-    // REQUIRES: flashcard set has at least one flashcard added to it
+    // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
     // EFFECTS: gets a flashcard from the given flashcard set based of its flashcard number which does not follow
     // zero-based indexing and is based of when it was added to the set
     public Flashcard getFlashCard(int number) {
@@ -75,6 +75,7 @@ public class FlashcardSet implements Writable {
     }
 
 
+    // EFFECTS: returns flashcard set as json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -83,6 +84,7 @@ public class FlashcardSet implements Writable {
         return json;
     }
 
+    // EFFECTS: returns flashcards in flashcard set as JSON array
     public JSONArray flashcardsToJson() {
         JSONArray jsonArray = new JSONArray();
 

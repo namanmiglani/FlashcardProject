@@ -1,3 +1,6 @@
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 package persistence;
 
 import model.*;
@@ -5,7 +8,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 
-// writes JSON representation of the flashcard set to a file
+// Represents a writer that writes JSON representation of the flashcard set to a file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

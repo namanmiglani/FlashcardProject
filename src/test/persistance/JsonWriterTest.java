@@ -19,7 +19,7 @@ public class JsonWriterTest {
             FlashcardSet fs = new FlashcardSet("testSet");
             JsonWriter writer = new JsonWriter(".data/my\0:file.json");
             writer.open();
-            fail("IOException was expected");
+            fail("IOException was expected, but not thrown");
         } catch (IOException e) {
             // expected
         }
@@ -40,7 +40,7 @@ public class JsonWriterTest {
             assertEquals(0, fs.getSetOfFlashcards().size());
 
         } catch (IOException e) {
-            fail("unexpected");
+            fail("unexpected error thrown");
         }
     }
 
@@ -60,7 +60,7 @@ public class JsonWriterTest {
             assertEquals(1, fs.getSetOfFlashcards().size());
 
         } catch (IOException e) {
-            fail("unexpected");
+            fail("unexpected error thrown");
         }
     }
 

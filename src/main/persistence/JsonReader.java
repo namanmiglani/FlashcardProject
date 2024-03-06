@@ -1,3 +1,6 @@
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 package persistence;
 
 import model.*;
@@ -10,7 +13,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-// Reads a flashcard set from JSON data stored in a file
+// Reader that reads a flashcard set from JSON data stored in a file
 public class JsonReader {
 
     private String source;
@@ -21,14 +24,14 @@ public class JsonReader {
     }
 
     // EFFECTS: reads JSON data and returns the flashcard set it reads
-    // throws an IOException if error occurs in this process
+    // throws an IOException if error occurs in reading data from file
     public FlashcardSet read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseFlashcardSet(jsonObject);
     }
 
-    // EFFECTS: reads file and returns it as a string
+    // EFFECTS: reads source file and returns it as a string
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 

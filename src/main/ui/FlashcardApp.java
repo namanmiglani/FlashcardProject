@@ -5,24 +5,28 @@ import model.FlashcardSet;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
 // Flashcard application
 public class FlashcardApp {
-    private static final String JSON_STORE = "./data/flashcardSet.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private static final String JSON_STORE_MATH = "./data/flashcardSetMath.json";
+    private static final String JSON_STORE_BIOLOGY = "./data/flashcardSetBiology.json";
+    private JsonWriter jsonWriterMath;
+    private JsonReader jsonReaderMath;
+    private JsonWriter jsonWriterBiology;
+    private JsonReader jsonReaderBiology;
 
     private FlashcardSet mathSet;
     private FlashcardSet biologySet;
 
-    // EFFECTS: runs the flashcard app
+    // EFFECTS: runs the flashcard app, and constructs json reader and writer
     public FlashcardApp() throws FileNotFoundException {
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriterMath = new JsonWriter(JSON_STORE_MATH);
+        jsonReaderMath = new JsonReader(JSON_STORE_MATH);
+        jsonWriterBiology = new JsonWriter(JSON_STORE_BIOLOGY);
+        jsonReaderBiology = new JsonReader(JSON_STORE_BIOLOGY);
         runFlashcardApp();
     }
 
@@ -211,28 +215,36 @@ public class FlashcardApp {
         return toView;
     }
 
+    // EFFECTS: saves the flashcard set that the user selects to file
     private void saveSet() {
         FlashcardSet fs = selectSet();
         try {
-            jsonWriter.open();
-            jsonWriter.write(fs);
-            jsonWriter.close();
+            if (fs.equals(mathSet)) {
+                jsonWriterMath.open();
+                jsonWriterMath.write(fs);
+                jsonWriterMath.close();
+            } else {
+                jsonWriterBiology.open();
+                jsonWriterBiology.write(fs);
+                jsonWriterBiology.close();
+            }
             System.out.println("Saved");
         } catch (FileNotFoundException e) {
             System.out.println("error");
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads the saved flashcard set to selected set
     private void loadSet() {
         FlashcardSet fs = selectSet();
         try {
             if (fs.equals(mathSet)) {
-                mathSet = jsonReader.read();
-                System.out.println("Loaded");
+                mathSet = jsonReaderMath.read();
             } else {
-                biologySet = jsonReader.read();
-                System.out.println("Loaded");
+                biologySet = jsonReaderBiology.read();
             }
+            System.out.println("Loaded");
         } catch (IOException e) {
             System.out.println("error");
         }

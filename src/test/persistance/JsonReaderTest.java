@@ -18,14 +18,14 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/nonExistantFileTest.json");
         try {
             FlashcardSet fs = reader.read();
-            fail("expected error");
+            fail("expected error not caught");
         } catch (IOException e) {
             //
         }
     }
 
     @Test
-    void testReaderEmptyFlashcardSetTest() {
+    void readerEmptyFlashcardSetTest() {
         try {
             FlashcardSet fs = new FlashcardSet("testSet");
             JsonWriter writer = new JsonWriter("./data/testReaderEmptyFlashcardSet.json");
@@ -38,7 +38,7 @@ public class JsonReaderTest {
             assertEquals("testSet", fs.getName());
             assertEquals(0, fs.getSetOfFlashcards().size());
         } catch (IOException e) {
-            fail("expected error");
+            fail("expected error thrown");
         }
     }
 
@@ -58,7 +58,7 @@ public class JsonReaderTest {
             assertEquals(1, fs.getSetOfFlashcards().size());
 
         } catch (IOException e) {
-            fail("unexpected");
+            fail("unexpected error thrown");
         }
     }
 

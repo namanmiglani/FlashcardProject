@@ -65,7 +65,9 @@ public class JsonReader {
     private void addFlashcard(FlashcardSet fs, JSONObject jsonObject) {
         String question = jsonObject.getString("question");
         String answer = jsonObject.getString("answer");
-        Flashcard flashcard = new Flashcard(question, answer);
+        int correctAttempts = jsonObject.getInt("correctAttempts");
+        int incorrectAttempts = jsonObject.getInt("incorrectAttempts");
+        Flashcard flashcard = new Flashcard(question, answer, correctAttempts, incorrectAttempts);
         fs.addFlashcardToSet(flashcard);
     }
 

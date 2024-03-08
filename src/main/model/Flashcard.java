@@ -18,7 +18,15 @@ public class Flashcard implements Writable {
         this.question = question;
         this.answer = answer;
         this.correctAttempts = 0;
-        this. incorrectAttempts = 0;
+        this.incorrectAttempts = 0;
+    }
+
+    // EFFECTS: Creates new flashcard with a question, an answer, and attempts taken on answering it
+    public Flashcard(String question, String answer, int correctAttempts, int incorrectAttempts) {
+        this.question = question;
+        this.answer = answer;
+        this.correctAttempts = correctAttempts;
+        this.incorrectAttempts = incorrectAttempts;
     }
 
 
@@ -70,6 +78,8 @@ public class Flashcard implements Writable {
         JSONObject json = new JSONObject();
         json.put("question", question);
         json.put("answer", answer);
+        json.put("correctAttempts", correctAttempts);
+        json.put("incorrectAttempts", incorrectAttempts);
         return json;
     }
 

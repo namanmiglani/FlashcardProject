@@ -1,13 +1,9 @@
 {
     "name": "Math 101 Set",
-    "flashcards": [
-        {
-            "question": "m",
-            "answer": "1"
-        },
-        {
-            "question": "2",
-            "answer": "w"
-        }
-    ]
+    "flashcards": [{
+        "correctAttempts": 1,
+        "incorrectAttempts": 1,
+        "question": "1+1",
+        "answer": "2"
+    }]
 }

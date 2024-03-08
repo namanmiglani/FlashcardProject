@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class FlashcardTest {
 
     Flashcard testFlashcard;
+    Flashcard testFlashcardTwo;
 
     @BeforeEach
     void runBefore(){
         testFlashcard = new Flashcard("question?" , "answer");
+        testFlashcardTwo = new Flashcard("question?" , "answer", 1 , 1);
     }
 
     @Test
@@ -21,6 +23,14 @@ class FlashcardTest {
         assertEquals("answer", testFlashcard.getAnswer());
         assertEquals(0, testFlashcard.getCorrectAttempts());
         assertEquals(0, testFlashcard.getIncorrectAttempts());
+    }
+
+    @Test
+    void testConstructorTwo() {
+        assertEquals("question?", testFlashcardTwo.getQuestion());
+        assertEquals("answer", testFlashcardTwo.getAnswer());
+        assertEquals(1, testFlashcardTwo.getCorrectAttempts());
+        assertEquals(1, testFlashcardTwo.getIncorrectAttempts());
     }
 
     @Test
@@ -49,7 +59,10 @@ class FlashcardTest {
     @Test
     void testToJson() {
         JSONObject testJson = testFlashcard.toJson();
+        JSONObject testJsonTwo = testFlashcardTwo.toJson();
         assertEquals("question?", testJson.get("question"));
         assertEquals("answer", testJson.get("answer"));
+        assertEquals(1, testJsonTwo.get("correctAttempts"));
+        assertEquals(1, testJsonTwo.get("incorrectAttempts"));
     }
 }

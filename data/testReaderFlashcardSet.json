@@ -1,6 +1,8 @@
 {
     "name": "testSet",
     "flashcards": [{
+        "correctAttempts": 0,
+        "incorrectAttempts": 0,
         "question": "q",
         "answer": "a"
     }]

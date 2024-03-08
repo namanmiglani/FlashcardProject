@@ -1,13 +1,9 @@
 {
     "name": "Biology 112 Set",
-    "flashcards": [
-        {
-            "question": "b",
-            "answer": "2"
-        },
-        {
-            "question": "s",
-            "answer": "4"
-        }
-    ]
+    "flashcards": [{
+        "correctAttempts": 2,
+        "incorrectAttempts": 0,
+        "question": "q",
+        "answer": "a"
+    }]
 }

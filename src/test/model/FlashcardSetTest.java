@@ -91,7 +91,7 @@ public class FlashcardSetTest {
         JSONObject testJson = testFlashcardSet.toJson();
         assertEquals("Test set", testJson.get("name"));
         JSONArray myArray = (JSONArray) testJson.get("flashcards");
-        assertEquals("{\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
+        assertEquals("{\"correctAttempts\":0,\"incorrectAttempts\":0,\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
     }
 
     @Test
@@ -99,8 +99,8 @@ public class FlashcardSetTest {
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
         JSONArray myArray = testFlashcardSet.flashcardsToJson();
-        assertEquals("{\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
-        assertEquals("{\"question\":\"test question two\",\"answer\":\"test answer two\"}", myArray.get(1).toString());
+        assertEquals("{\"correctAttempts\":0,\"incorrectAttempts\":0,\"question\":\"test question\",\"answer\":\"test answer\"}", myArray.get(0).toString());
+        assertEquals("{\"correctAttempts\":0,\"incorrectAttempts\":0,\"question\":\"test question two\",\"answer\":\"test answer two\"}", myArray.get(1).toString());
     }
 
 }

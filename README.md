@@ -31,3 +31,13 @@ for how many times I have gotten it correct, and how many times I have got it in
 - As a user, I want to be able to save a flashcard set, and the flashcards in it to a file
 - As a user, I want to be able to load a saved flashcard set from a file
 
+**Instructions for Grader**
+- You can generate the first required action related to the user story "adding multiple flashcards to a flashcard set" by
+clicking the add flashcard button, and then it will be displayed on the application
+- You can generate the second required action related to the user story "removing flashcards" by selecting a flashcard
+and clicking the delete flashcard button
+- You can generate the third action related to the user story "updating flashcards" by selecting a flashcard
+and clicking the update flashcard, and then prompting if you got the question correct or incorrect
+- You can locate my visual component by running the application as it is on the main menu
+- You can save the state of my application by closing the application where you will be asked if you would like to save
+- You can reload the state of my application by clicking the load set button on the main menu

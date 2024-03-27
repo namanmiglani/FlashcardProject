@@ -59,6 +59,15 @@ public class FlashcardSet implements Writable {
     }
 
     // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
+    // MODIFIES: this
+    // EFFECTS: deletes given flashcard from the set
+    public void deleteFlashCard(Flashcard f) {
+        if (setOfFlashcards.contains(f)) {
+            setOfFlashcards.remove(f);
+        }
+    }
+
+    // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
     // EFFECTS: gets a flashcard's overview from the given flashcard set based of its flashcard number which does not
     // follow zero-based indexing and is based of when it was added to the set
     public String getFlashCardOverview(int number) {

@@ -1,9 +1,17 @@
 {
     "name": "Math 101 Set",
-    "flashcards": [{
-        "correctAttempts": 1,
-        "incorrectAttempts": 1,
-        "question": "1+1",
-        "answer": "2"
-    }]
+    "flashcards": [
+        {
+            "correctAttempts": 1,
+            "incorrectAttempts": 1,
+            "question": "1+1",
+            "answer": "2"
+        },
+        {
+            "correctAttempts": 0,
+            "incorrectAttempts": 1,
+            "question": "1",
+            "answer": "1"
+        }
+    ]
 }

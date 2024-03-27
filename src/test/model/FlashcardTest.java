@@ -10,11 +10,13 @@ class FlashcardTest {
 
     Flashcard testFlashcard;
     Flashcard testFlashcardTwo;
+    Flashcard testFlashcardDuplicate;
 
     @BeforeEach
     void runBefore(){
         testFlashcard = new Flashcard("question?" , "answer");
         testFlashcardTwo = new Flashcard("question?" , "answer", 1 , 1);
+        testFlashcardDuplicate = new Flashcard("question?" , "answer", 5 , 5);
     }
 
     @Test
@@ -64,5 +66,12 @@ class FlashcardTest {
         assertEquals("answer", testJson.get("answer"));
         assertEquals(1, testJsonTwo.get("correctAttempts"));
         assertEquals(1, testJsonTwo.get("incorrectAttempts"));
+    }
+
+    @Test
+    void testEqualsHashcodeToString() {
+        assertTrue(testFlashcardTwo.equals(testFlashcardDuplicate));
+        assertTrue(testFlashcardTwo.hashCode() == testFlashcardDuplicate.hashCode());
+        assertEquals("question?", testFlashcard.toString());
     }
 }

@@ -11,20 +11,20 @@ import java.util.Scanner;
 
 // Flashcard application
 public class FlashcardApp {
-    private static final String JSON_STORE_MATH = "./data/flashcardSetMath.json";
+    private static final String JSON_STORE_SET = "./data/flashcardSet.json";
     private static final String JSON_STORE_BIOLOGY = "./data/flashcardSetBiology.json";
-    private JsonWriter jsonWriterMath;
-    private JsonReader jsonReaderMath;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     private JsonWriter jsonWriterBiology;
     private JsonReader jsonReaderBiology;
 
-    private FlashcardSet mathSet;
+    private FlashcardSet set;
     private FlashcardSet biologySet;
 
     // EFFECTS: runs the flashcard app, and constructs json reader and writer
     public FlashcardApp() throws FileNotFoundException {
-        jsonWriterMath = new JsonWriter(JSON_STORE_MATH);
-        jsonReaderMath = new JsonReader(JSON_STORE_MATH);
+        jsonWriter = new JsonWriter(JSON_STORE_SET);
+        jsonReader = new JsonReader(JSON_STORE_SET);
         jsonWriterBiology = new JsonWriter(JSON_STORE_BIOLOGY);
         jsonReaderBiology = new JsonReader(JSON_STORE_BIOLOGY);
         runFlashcardApp();
@@ -57,7 +57,11 @@ public class FlashcardApp {
     // MODIFIES: this
     // EFFECTS: initializes two flashcard sets
     private void init() {
-        mathSet = new FlashcardSet("Math 101 Set");
+        Scanner s = new Scanner(System.in);
+        System.out.println("What would you like to name your flashcard set?");
+        String name = s.nextLine();
+        set = new FlashcardSet(name);
+        System.out.println("Flashard set" + name + " created");
         biologySet = new FlashcardSet("Biology 112 Set");
     }
 
@@ -95,8 +99,8 @@ public class FlashcardApp {
     // MODIFIES: this
     // EFFECTS: allows user to add a new flashcard to a set
     private void createNewFlashcard() {
-        System.out.println("What set would you like to add the question to");
-        FlashcardSet selectedSet = selectSet();
+        //System.out.println("What set would you like to add the question to");
+        //FlashcardSet selectedSet = selectSet();
         Scanner s = new Scanner(System.in);
         System.out.println("What is this flashcard's question?");
         String question = s.nextLine();
@@ -104,37 +108,37 @@ public class FlashcardApp {
         String answer = s.nextLine();
 
         Flashcard myFlashcard = new Flashcard(question, answer);
-        selectedSet.addFlashcardToSet(myFlashcard);
+        set.addFlashcardToSet(myFlashcard);
         System.out.println("Flashcard has been added to set");
     }
 
     // EFFECTS: allows user to view all flashcards in a set, or if the set is empty they are informed
     public void viewFlashcards() {
-        FlashcardSet selectedSet = selectSet();
-        if (selectedSet.getSetOfFlashcards().isEmpty()) {
+        //FlashcardSet selectedSet = selectSet();
+        if (set.getSetOfFlashcards().isEmpty()) {
             System.out.println("The set is empty\n");
         } else {
-            System.out.println(selectedSet.viewFlashcardSet());
+            System.out.println(set.viewFlashcardSet());
         }
     }
 
     // MODIFIES: this
     // EFFECTS: allows user to delete a new flashcard from a set, or if the set is empty they are informed
     public void deleteFlashcard() {
-        FlashcardSet selectedSet = selectSet();
-        if (selectedSet.getSetOfFlashcards().isEmpty()) {
+        //FlashcardSet selectedSet = selectSet();
+        if (set.getSetOfFlashcards().isEmpty()) {
             System.out.println("The set is empty\n");
         } else {
-            System.out.println(selectedSet.viewFlashcardSet());
+            System.out.println(set.viewFlashcardSet());
             System.out.println("Which flashcard number would you like to delete");
             Scanner s = new Scanner(System.in);
             int toDelete = s.nextInt();
-            selectedSet.deleteFlashCard(toDelete);
-            if (selectedSet.getSetOfFlashcards().isEmpty()) {
+            set.deleteFlashCard(toDelete);
+            if (set.getSetOfFlashcards().isEmpty()) {
                 System.out.println("The set is empty\n");
             } else {
                 System.out.println("Done! Here is the updated flashcard set:\n");
-                System.out.println(selectedSet.viewFlashcardSet());
+                System.out.println(set.viewFlashcardSet());
             }
         }
     }
@@ -143,21 +147,21 @@ public class FlashcardApp {
     // EFFECTS: allows user to view overview of a set with all the flashcards in it, or if the set is empty they are
     // informed
     public void produceOverview() {
-        FlashcardSet selectedSet = selectSet();
-        if (selectedSet.getSetOfFlashcards().isEmpty()) {
+        //FlashcardSet selectedSet = selectSet();
+        if (set.getSetOfFlashcards().isEmpty()) {
             System.out.println("The set is empty\n");
         } else {
-            int toView = getValidCard(selectedSet);
-            System.out.println(selectedSet.getFlashCardOverview(toView));
+            int toView = getValidCard(set);
+            System.out.println(set.getFlashCardOverview(toView));
             System.out.println("\nWould you like to update this:");
             if (update()) {
                 System.out.println("did you get the question correct?");
                 if (update()) {
-                    selectedSet.getFlashCard(toView).answeredCorrect();
-                    System.out.println(selectedSet.getFlashCardOverview(toView));
+                    set.getFlashCard(toView).answeredCorrect();
+                    System.out.println(set.getFlashCardOverview(toView));
                 } else {
-                    selectedSet.getFlashCard(toView).answeredIncorrect();
-                    System.out.println(selectedSet.getFlashCardOverview(toView));
+                    set.getFlashCard(toView).answeredIncorrect();
+                    System.out.println(set.getFlashCardOverview(toView));
                 }
             }
         }
@@ -176,7 +180,7 @@ public class FlashcardApp {
         }
 
         if (selection.equals("m")) {
-            return mathSet;
+            return set;
         } else {
             return biologySet;
         }
@@ -217,17 +221,11 @@ public class FlashcardApp {
 
     // EFFECTS: saves the flashcard set that the user selects to file
     private void saveSet() {
-        FlashcardSet fs = selectSet();
+        //FlashcardSet fs = selectSet();
         try {
-            if (fs.equals(mathSet)) {
-                jsonWriterMath.open();
-                jsonWriterMath.write(fs);
-                jsonWriterMath.close();
-            } else {
-                jsonWriterBiology.open();
-                jsonWriterBiology.write(fs);
-                jsonWriterBiology.close();
-            }
+            jsonWriter.open();
+            jsonWriter.write(set);
+            jsonWriter.close();
             System.out.println("Saved");
         } catch (FileNotFoundException e) {
             System.out.println("error");
@@ -237,13 +235,9 @@ public class FlashcardApp {
     // MODIFIES: this
     // EFFECTS: loads the saved flashcard set to selected set
     private void loadSet() {
-        FlashcardSet fs = selectSet();
+        //FlashcardSet fs = selectSet();
         try {
-            if (fs.equals(mathSet)) {
-                mathSet = jsonReaderMath.read();
-            } else {
-                biologySet = jsonReaderBiology.read();
-            }
+            set = jsonReader.read();
             System.out.println("Loaded");
         } catch (IOException e) {
             System.out.println("error");

@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.util.Objects;
+
 
 // Represents a flashcard having a question, an answer, and a statistic for how many times it has been answered
 // correctly, and incorrectly
@@ -65,10 +67,10 @@ public class Flashcard implements Writable {
     public String flashCardOverview() {
         String overview = "";
         overview += "\n";
-        overview += "The question is: " + this.question + "\n";
-        overview += "The answer is: " + this.answer + "\n";
-        overview += "You have answered this correctly: " + this.correctAttempts + " times\n";
-        overview += "You have answered this incorrectly: " + this.incorrectAttempts + " times";
+        overview += " The question is: " + this.question + "\n";
+        overview += " The answer is: " + this.answer + "\n";
+        overview += " You have answered this correctly: " + this.correctAttempts + " times\n";
+        overview += " You have answered this incorrectly: " + this.incorrectAttempts + " times";
         return overview;
     }
 
@@ -83,4 +85,28 @@ public class Flashcard implements Writable {
         return json;
     }
 
+    // EFFECTS: compares flashcards based of the question and answer
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Flashcard flashcard = (Flashcard) o;
+        return Objects.equals(question, flashcard.question) && Objects.equals(answer, flashcard.answer);
+    }
+
+    // EFFECTS: considers flashcards with the same question and answer the same
+    @Override
+    public int hashCode() {
+        return Objects.hash(question, answer);
+    }
+
+    // EFFECTS: uses the question to identify flashcard objects
+    @Override
+    public String toString() {
+        return question;
+    }
 }

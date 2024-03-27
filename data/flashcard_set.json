@@ -1,0 +1,17 @@
+{
+    "name": "Flashcard App",
+    "flashcards": [
+        {
+            "correctAttempts": 1,
+            "incorrectAttempts": 0,
+            "question": "gfx",
+            "answer": "xdf"
+        },
+        {
+            "correctAttempts": 0,
+            "incorrectAttempts": 1,
+            "question": "fcg",
+            "answer": "dr"
+        }
+    ]
+}

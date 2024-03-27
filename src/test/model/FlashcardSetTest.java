@@ -69,6 +69,9 @@ public class FlashcardSetTest {
         testFlashcardSet.deleteFlashCard(testFlashcardTwo);
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
         assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
+        testFlashcardSet.deleteFlashCard(testFlashcardTwo);
+        assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
+        assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
     }
 
     @Test

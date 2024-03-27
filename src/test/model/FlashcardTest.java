@@ -71,6 +71,10 @@ class FlashcardTest {
     @Test
     void testEqualsHashcodeToString() {
         assertTrue(testFlashcardTwo.equals(testFlashcardDuplicate));
+        assertTrue(testFlashcardTwo.equals(testFlashcardTwo));
+        assertTrue(new Flashcard("q", "a").equals(new Flashcard("q", "a")));
+        assertFalse(new Flashcard("q", "a").equals(new Flashcard("b", "a")));
+        assertFalse(new Flashcard("q", "a").equals(new FlashcardSet("q")));
         assertTrue(testFlashcardTwo.hashCode() == testFlashcardDuplicate.hashCode());
         assertEquals("question?", testFlashcard.toString());
     }

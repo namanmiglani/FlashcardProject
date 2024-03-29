@@ -104,7 +104,7 @@ public class FlashcardViewer extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int selection = JOptionPane.showOptionDialog(null, "Would you like to  this set?",
+                int selection = JOptionPane.showOptionDialog(null, "Would you like to save this set?",
                         null, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                 process(selection);
                 }

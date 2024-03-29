@@ -71,8 +71,10 @@ public class FlashcardGUI {
         String answer = JOptionPane.showInputDialog(null, "Please enter the answer", null,
                 JOptionPane.OK_CANCEL_OPTION);
         Flashcard f = new Flashcard(question, answer);
-        fs.addFlashcardToSet(f);
-        flashcardsLeftPane.addElement(f);
+        if (f.getQuestion() != null || f.getAnswer() != null) {
+            fs.addFlashcardToSet(f);
+            flashcardsLeftPane.addElement(f);
+        }
     }
 
     // MODIFIES: this
@@ -96,7 +98,7 @@ public class FlashcardGUI {
         int index = flashcards.getSelectedIndex();
         int size = flashcardsLeftPane.size();
 
-        int selection = JOptionPane.showConfirmDialog(null, "sure?", null, JOptionPane.YES_NO_OPTION);
+        int selection = JOptionPane.showConfirmDialog(null, "Are you sure?", null, JOptionPane.YES_NO_OPTION);
         if (selection == JOptionPane.YES_OPTION) {
             fs.deleteFlashCard(selected);
             flashcardInfo.removeAllElements();

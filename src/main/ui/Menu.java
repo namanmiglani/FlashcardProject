@@ -33,7 +33,7 @@ public class Menu extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds buttons and image to main menu
+    // EFFECTS: adds buttons and image to main menu, along with a picture
     public void addToPane(Container pane) {
         pane.setLayout(null);
         title = new JLabel("Flashcard App");

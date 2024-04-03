@@ -21,6 +21,8 @@ public class FlashcardSet implements Writable {
     // EFFECTS: adds a flashcard to the flashcard set
     public void addFlashcardToSet(Flashcard flashcardToAdd) {
         setOfFlashcards.add(flashcardToAdd);
+        EventLog.getInstance().logEvent(new Event("Flashcard: " + flashcardToAdd.getQuestion()
+                + ", has been added to the set"));
     }
 
 
@@ -55,7 +57,9 @@ public class FlashcardSet implements Writable {
     // zero-based indexing and is based of when it was added to the set
     public void deleteFlashCard(int number) {
         number--;
+        Flashcard f = setOfFlashcards.get(number);
         setOfFlashcards.remove(number);
+        EventLog.getInstance().logEvent(new Event("Flashcard: " + f.getQuestion() + ", been deleted from the set"));
     }
 
     // REQUIRES: flashcard set has at least one flashcard added to it, and 0 < number <= setOfFlashcards.size()
@@ -64,6 +68,8 @@ public class FlashcardSet implements Writable {
     public void deleteFlashCard(Flashcard f) {
         if (setOfFlashcards.contains(f)) {
             setOfFlashcards.remove(f);
+            EventLog.getInstance().logEvent(new Event("Flashcard: " + f.getQuestion()
+                    + ", has been deleted from the set"));
         }
     }
 
@@ -102,6 +108,10 @@ public class FlashcardSet implements Writable {
         }
 
         return jsonArray;
+    }
+
+    public void printLog() {
+        EventLog.getInstance().printSummary();
     }
 }
 

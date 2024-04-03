@@ -41,3 +41,13 @@ and clicking the update flashcard button, and then prompting if you got the ques
 - You can locate my visual component by running the application as it is on the main menu
 - You can save the state of my application by closing the application where you will be asked if you would like to save
 - You can reload the state of my application by clicking the load set button on the main menu
+
+Phase 4: Task 2:
+
+- Flashcard: 2 + 2, has been added to the set
+- Flashcard: what course is this for, has been added to the set
+- Flashcard: 2 + 2, has been answered correctly
+- Flashcard: 2 + 2, has been answered incorrectly
+- Flashcard: what course is this for, has been answered correctly
+- Flashcard: what course is this for, has been deleted from the set
+- Saved

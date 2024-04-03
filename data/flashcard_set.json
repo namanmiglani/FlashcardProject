@@ -1,29 +1,9 @@
 {
     "name": "Flashcard App",
-    "flashcards": [
-        {
-            "correctAttempts": 1,
-            "incorrectAttempts": 1,
-            "question": "2 + 2 = ?",
-            "answer": "4"
-        },
-        {
-            "correctAttempts": 0,
-            "incorrectAttempts": 0,
-            "question": "Phase?",
-            "answer": "3"
-        },
-        {
-            "correctAttempts": 1,
-            "incorrectAttempts": 0,
-            "question": "Course",
-            "answer": "210"
-        },
-        {
-            "correctAttempts": 1,
-            "incorrectAttempts": 0,
-            "question": "Naman ",
-            "answer": "Miglani"
-        }
-    ]
+    "flashcards": [{
+        "correctAttempts": 1,
+        "incorrectAttempts": 1,
+        "question": "2 + 2",
+        "answer": "4"
+    }]
 }

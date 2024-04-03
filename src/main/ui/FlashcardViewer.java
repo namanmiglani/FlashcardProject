@@ -116,13 +116,14 @@ public class FlashcardViewer extends JFrame {
     // EFFECTS: processes the user input when they are asked to save a set
     public void process(int selection) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        String s = "";
         if (selection == JOptionPane.YES_OPTION) {
             FlashcardSet toSave = setup.getFs();
             try {
                 writer.open();
                 writer.write(toSave);
                 writer.close();
-                System.out.println("Saved");
+                s = "Saved";
             } catch (FileNotFoundException e) {
                 System.out.println("error");
             }
@@ -130,6 +131,10 @@ public class FlashcardViewer extends JFrame {
             setVisible(true);
             setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
+        }
+        setup.getFs().printLog();
+        if (s != "") {
+            System.out.println(s);
         }
     }
 }

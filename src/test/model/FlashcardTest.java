@@ -4,6 +4,8 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlashcardTest {
@@ -40,6 +42,7 @@ class FlashcardTest {
         assertEquals(0, testFlashcard.getCorrectAttempts());
         assertEquals(0, testFlashcard.getIncorrectAttempts());
         testFlashcard.answeredCorrect();
+        assertTrue(EventLog.getInstance().getEvents().contains(new Event("Flashcard: question?, has been answered correctly")));
         assertEquals(1, testFlashcard.getCorrectAttempts());
         testFlashcard.answeredCorrect();
         assertEquals(2, testFlashcard.getCorrectAttempts());
@@ -47,6 +50,7 @@ class FlashcardTest {
         assertEquals(1, testFlashcard.getIncorrectAttempts());
         testFlashcard.answeredIncorrect();
         assertEquals(2, testFlashcard.getIncorrectAttempts());
+        assertTrue(EventLog.getInstance().getEvents().contains(new Event("Flashcard: question?, has been answered incorrectly")));
     }
 
     @Test

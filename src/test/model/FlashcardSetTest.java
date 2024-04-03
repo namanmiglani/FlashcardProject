@@ -33,6 +33,7 @@ public class FlashcardSetTest {
         assertEquals(0, testFlashcardSet.getSetOfFlashcards().size());
         testFlashcardSet.addFlashcardToSet(testFlashcardOne);
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
+        assertTrue(EventLog.getInstance().getEvents().contains(new Event("Flashcard: test question, has been added to the set")));
         testFlashcardSet.addFlashcardToSet(testFlashcardTwo);
         assertEquals(2, testFlashcardSet.getSetOfFlashcards().size());
         assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
@@ -55,6 +56,7 @@ public class FlashcardSetTest {
         assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
         assertEquals(testFlashcardTwo, testFlashcardSet.getSetOfFlashcards().get(1));
         testFlashcardSet.deleteFlashCard(1);
+        assertTrue(EventLog.getInstance().getEvents().contains(new Event("Flashcard: test question, been deleted from the set")));
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
         assertEquals(testFlashcardTwo, testFlashcardSet.getSetOfFlashcards().get(0));
     }
@@ -70,6 +72,7 @@ public class FlashcardSetTest {
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
         assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
         testFlashcardSet.deleteFlashCard(testFlashcardTwo);
+        assertTrue(EventLog.getInstance().getEvents().contains(new Event("Flashcard: test question two, has been deleted from the set")));
         assertEquals(1, testFlashcardSet.getSetOfFlashcards().size());
         assertEquals(testFlashcardOne, testFlashcardSet.getSetOfFlashcards().get(0));
     }

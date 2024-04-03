@@ -52,12 +52,16 @@ public class Flashcard implements Writable {
     // MODIFIES: this
     // EFFECTS: adds one to the amount of times you have gotten a flashcard's answer correct
     public void answeredCorrect() {
+        EventLog.getInstance().logEvent(new Event("Flashcard: " + this.getQuestion()
+                + ", has been answered correctly"));
         correctAttempts++;
     }
 
     // MODIFIES: this
     // EFFECTS: adds one to the amount of times you have gotten a flashcard's answer incorrect
     public void answeredIncorrect() {
+        EventLog.getInstance().logEvent(new Event("Flashcard: " + this.getQuestion()
+                + ", has been answered incorrectly"));
         incorrectAttempts++;
     }
 

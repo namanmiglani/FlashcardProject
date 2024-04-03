@@ -51,3 +51,11 @@ Phase 4: Task 2:
 - Flashcard: what course is this for, has been answered correctly
 - Flashcard: what course is this for, has been deleted from the set
 - Saved
+  
+Phase 4: Task 3
+If I were to refactor my project I would like to implement the composite pattern on my project. I would like to do this
+as it would allow users to have flashcard sets with flashcards, and they could also have the option to put a flashcard set
+that is a subtype of their current set directly in the set with its own questions. For example if someone has a Math set, 
+they could have subsets for each lecture in the math set along with some general questions in the main set. Using the design 
+pattern to implement these desired changes would still allow the user to preform the user stories I wanted to this application 
+to have after some refactoring was done. 

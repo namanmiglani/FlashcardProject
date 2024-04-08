@@ -82,6 +82,6 @@ If I were to refactor my project I would like to implement the composite pattern
 as it would allow users to have flashcard sets with flashcards, and they could also have the option to put a flashcard set
 that is a subtype of their current set directly in the set with its own questions. For example if someone has a Math set, 
 they could have subsets for each lecture in the math set along with some general questions in the main set. Using the design 
-pattern to implement these desired changes would still allow the user to perform the user stories I wanted to this application 
+pattern to implement these desired changes would still allow the user to perform the user stories I wanted this application 
 to have after some refactoring was done. Along with this I would rename some classes, and fields to make the project
 layout more clear for others working with the code.

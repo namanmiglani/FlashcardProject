@@ -1,9 +1,4 @@
 {
     "name": "Flashcard App",
-    "flashcards": [{
-        "correctAttempts": 1,
-        "incorrectAttempts": 1,
-        "question": "2 + 2",
-        "answer": "4"
-    }]
+    "flashcards": []
 }

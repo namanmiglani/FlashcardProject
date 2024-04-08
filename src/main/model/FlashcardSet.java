@@ -106,12 +106,15 @@ public class FlashcardSet implements Writable {
         for (Flashcard f : setOfFlashcards) {
             jsonArray.put(f.toJson());
         }
-
         return jsonArray;
     }
 
     public void printLog() {
         EventLog.getInstance().printSummary();
+    }
+
+    public void clearEvents() {
+        EventLog.getInstance().clear();
     }
 }
 

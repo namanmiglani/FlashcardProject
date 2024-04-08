@@ -53,7 +53,7 @@ public class EventLog implements Iterable<Event> {
      */
     public void clear() {
         events.clear();
-        logEvent(new Event("Event log cleared."));
+        //logEvent(new Event("Event log cleared."));
     }
 
     @Override
@@ -63,7 +63,7 @@ public class EventLog implements Iterable<Event> {
 
     public void printSummary() {
         for (Event e: events) {
-            System.out.println(e.getDescription());
+            System.out.println(e);
         }
     }
 }

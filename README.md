@@ -42,20 +42,46 @@ and clicking the update flashcard button, and then prompting if you got the ques
 - You can save the state of my application by closing the application where you will be asked if you would like to save
 - You can reload the state of my application by clicking the load set button on the main menu
 
-Phase 4: Task 2:
+**Phase 4: Task 2:**
 
-- Flashcard: 2 + 2, has been added to the set
-- Flashcard: what course is this for, has been added to the set
-- Flashcard: 2 + 2, has been answered correctly
-- Flashcard: 2 + 2, has been answered incorrectly
-- Flashcard: what course is this for, has been answered correctly
-- Flashcard: what course is this for, has been deleted from the set
-- Saved
+Sun Apr 07 23:31:41 PDT 2024
+
+Flashcard: 2+2, has been added to the set
+
+Sun Apr 07 23:31:46 PDT 2024
+
+Flashcard: 2+5, has been added to the set
+
+Sun Apr 07 23:31:53 PDT 2024
+
+Flashcard: What phase is this?, has been added to the set
+
+Sun Apr 07 23:31:56 PDT 2024
+
+Flashcard: 2+2, has been answered correctly
+
+Sun Apr 07 23:31:58 PDT 2024
+
+Flashcard: 2+5, has been answered incorrectly
+
+Sun Apr 07 23:32:00 PDT 2024
+
+Flashcard: What phase is this?, has been answered correctly
+
+Sun Apr 07 23:32:01 PDT 2024
+
+Flashcard: What phase is this?, has been answered correctly
+
+Sun Apr 07 23:32:02 PDT 2024
+
+Flashcard: What phase is this?, has been deleted from the set
   
-Phase 4: Task 3
+**Phase 4: Task 3**
+
 If I were to refactor my project I would like to implement the composite pattern on my project. I would like to do this
 as it would allow users to have flashcard sets with flashcards, and they could also have the option to put a flashcard set
 that is a subtype of their current set directly in the set with its own questions. For example if someone has a Math set, 
 they could have subsets for each lecture in the math set along with some general questions in the main set. Using the design 
-pattern to implement these desired changes would still allow the user to preform the user stories I wanted to this application 
-to have after some refactoring was done. 
+pattern to implement these desired changes would still allow the user to perform the user stories I wanted to this application 
+to have after some refactoring was done. Along with this I would rename some classes, and fields to make the project
+layout more clear for others working with the code.

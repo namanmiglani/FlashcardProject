@@ -95,6 +95,7 @@ public class FlashcardViewer extends JFrame {
         } catch (IOException e) {
             //
         }
+        setup.getFs().clearEvents();
     }
 
 

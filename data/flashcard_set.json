@@ -1,4 +1,9 @@
 {
     "name": "Flashcard App",
-    "flashcards": []
+    "flashcards": [{
+        "correctAttempts": 1,
+        "incorrectAttempts": 0,
+        "question": "What course is this for?",
+        "answer": "CPSC 210"
+    }]
 }
